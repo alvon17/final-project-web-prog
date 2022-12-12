@@ -8,7 +8,6 @@
             </script>
         @endforeach
     @endif
-    <!-- <script> Swal.fire('Any fool can use a computer') </script> -->
 
     <div class="login-form">
         <div class="container-fluid">
