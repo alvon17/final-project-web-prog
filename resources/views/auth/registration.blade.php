@@ -66,7 +66,7 @@
                                     <label class="mb-2"> Country </label>
                                     <select class="form-select form-select-sm" name="country_id" value="country_id"
                                         id="country_id">
-                                        <option selected>Choose a country</option>
+                                        <option selected hidden disabled>Choose a country</option>
                                         @foreach ($countries as $country)
                                             @if (old('country_id') == $country->id)
                                                 <option value="{{ $country->id }}" selected> {{ $country->country }} </option>
