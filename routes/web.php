@@ -21,3 +21,4 @@ Route::post('/custom-login', [AuthController::class, 'customLogin']);
 Route::get('/registration', [AuthController::class, 'registration']);
 Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/detail', [AuthController::class, 'detail']);
