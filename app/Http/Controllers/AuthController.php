@@ -90,14 +90,19 @@ class AuthController extends Controller
         return view('index');
     }
 
-    public function detail ()
+    public function detail()
     {
         return view('detail');
     }
 
-    public function manage ()
+    public function manage()
     {
         return view('manage');
+    }
+
+    public function profile()
+    {
+        return view('profile');
     }
 
     public function logout()

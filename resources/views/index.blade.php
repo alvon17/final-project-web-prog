@@ -19,7 +19,7 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 container-body">
             <div class="col">
                 <div class="card h-100">
-                    <img src="{{ asset('/image/gerry.jpg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/dummy.webp') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a short card.</p>
