@@ -24,3 +24,6 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/detail', [AuthController::class, 'detail']);
 Route::get('/manage', [AuthController::class, 'manage']);
 Route::get('/profile', [AuthController::class, 'profile']);
+Route::get('/add', [AuthController::class, 'add']);
+Route::get('/update', [AuthController::class, 'update']);
+Route::get('/cart', [AuthController::class, 'cart']);

@@ -105,6 +105,21 @@ class AuthController extends Controller
         return view('profile');
     }
 
+    public function add ()
+    {
+        return view ('add');
+    }
+
+    public function update ()
+    {
+        return view ('update');
+    }
+
+    public function cart ()
+    {
+        return view ('cart');
+    }
+
     public function logout()
     {
         Cookie::queue(Cookie::forget('username'));
