@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container" style="width: 60%;">
-        <div class="row justify-content-between pb-5">
+        <div class="row justify-content-between pb-3">
             <div class="col-5">
                 <div class="input-group">
                     <div class="form-outline search-form-outline">
