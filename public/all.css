@@ -83,13 +83,3 @@ body {
 .detail-card-title {
     font-size: 2em;
 }
-
-.image-container {
-    width: 2000px;
-    height: 300px;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
