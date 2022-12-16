@@ -83,3 +83,7 @@ body {
 .detail-card-title {
     font-size: 2em;
 }
+
+.col-form-label {
+    padding-top: 0;
+}
