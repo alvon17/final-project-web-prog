@@ -95,6 +95,11 @@ class AuthController extends Controller
         return view('detail');
     }
 
+    public function manage ()
+    {
+        return view('manage');
+    }
+
     public function logout()
     {
         Cookie::queue(Cookie::forget('username'));

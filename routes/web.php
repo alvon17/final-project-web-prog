@@ -22,3 +22,4 @@ Route::get('/registration', [AuthController::class, 'registration']);
 Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/detail', [AuthController::class, 'detail']);
+Route::get('/manage', [AuthController::class, 'manage']);
