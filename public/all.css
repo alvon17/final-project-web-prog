@@ -94,3 +94,7 @@ body {
     padding: 5px 8px 5px 8px;
     border-radius: 5px;
 }
+
+.image-left {
+    border-radius: 5px 0 0 5px;
+}
