@@ -69,9 +69,8 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2"> Country </label>
-                                    <select class="form-select form-select-sm" name="country_id" value="country_id"
-                                        id="country_id">
-                                        <option selected hidden disabled>Choose a country</option>
+                                    <select class="form-select form-select-sm" name="country_id" id="country_id">
+                                        <option selected hidden disabled value="">Choose a country</option>
                                         @foreach ($countries as $country)
                                             @if (old('country_id') == $country->id)
                                                 <option value="{{ $country->id }}" selected> {{ $country->country }}
@@ -81,8 +80,8 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('country'))
-                                        <span class="text-danger">{{ $errors->first('country') }}</span>
+                                    @if ($errors->has('country_id'))
+                                        <span class="text-danger">{{ $errors->first('country_id') }}</span>
                                     @endif
                                 </div>
                                 <div class="d-grid mx-auto">
