@@ -7,7 +7,7 @@
 
         <div class="card flex-row mx-auto align-items-center justify-content-center shadow-none" style="border: none;">
             <div class="image-container">
-                <img class="image-left" src="{{ asset('storage/dummy.webp') }}">
+                <img class="image-left" src="{{ asset('image/Gerry.jpg') }}" width="400px">
             </div>
             <div class="card-body">
                 <form>
