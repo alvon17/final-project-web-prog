@@ -98,3 +98,16 @@ body {
 .image-left {
     border-radius: 5px 0 0 5px;
 }
+
+.wrapper {
+    overflow-y: hidden;
+}
+
+.accordion-container {
+    width: 60%;
+    margin: auto;
+}
+
+.accordion-item {
+    margin-bottom: 4vh;
+}

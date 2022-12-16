@@ -105,19 +105,24 @@ class AuthController extends Controller
         return view('profile');
     }
 
-    public function add ()
+    public function add()
     {
-        return view ('add');
+        return view('add');
     }
 
-    public function update ()
+    public function update()
     {
-        return view ('update');
+        return view('update');
     }
 
-    public function cart ()
+    public function cart()
     {
-        return view ('cart');
+        return view('cart');
+    }
+
+    public function transaction()
+    {
+        return view('transaction');
     }
 
     public function logout()
