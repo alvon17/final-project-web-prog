@@ -40,11 +40,17 @@ body {
 .container-title {
     background-color: rgb(235, 232, 232);
     height: 5vh;
+    flex-wrap: nowrap !important;
 }
 
 .container-title h5 {
     margin: 0;
     font-size: 1em;
+    width: auto !important;
+}
+
+.container-title a {
+    text-decoration: none;
 }
 
 .container-body {

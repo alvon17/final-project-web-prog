@@ -14,6 +14,7 @@
     <div class="fluid-container mt-5 card-container">
         <div class="row container-title d-flex align-items-center">
             <h5>Beauty</h5>
+            <a href="#">View All</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 container-body">
             <div class="col">
@@ -76,6 +77,7 @@
     <div class="fluid-container mt-5 card-container">
         <div class="row container-title d-flex align-items-center">
             <h5>Camera</h5>
+            <a href="#">View All</a>
         </div>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 container-body">
             <div class="col">
