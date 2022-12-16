@@ -37,6 +37,12 @@ body {
     margin: 0 !important;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+
 .container-title {
     background-color: rgb(235, 232, 232);
     height: 5vh;
