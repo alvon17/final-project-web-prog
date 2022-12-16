@@ -34,6 +34,9 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            Session::put('username', $credentials['email']);
+            Session::put('password', $credentials['password']);
+
             if ($request->has('remember')) {
                 Cookie::queue(Cookie::make('username', $credentials['email'], 120));
                 Cookie::queue(Cookie::make('password', $credentials['password'], 120));

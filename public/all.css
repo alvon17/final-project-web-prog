@@ -1,40 +1,75 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
-.height {
-    height: 10vh;
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
-.search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+body {
+    background-color: rgb(206, 203, 203);
 }
 
-.search input {
-    height: 60px;
-    text-indent: 25px;
-    border: 2px solid #d6d4d4;
+.search-form-outline {
+    width: 80%;
 }
 
-.search input:focus {
-    box-shadow: none;
-    border: 2px solid blue;
+.search-form-control {
+    border-radius: 6px 0 0 6px;
 }
 
-.search .fa-search {
-    position: absolute;
-    top: 20px;
-    left: 16px;
-}
-
-.search button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 50px;
-    width: 110px;
-    background: blue;
+.search-icon {
+    background-color: gray;
+    border: none;
 }
 
 .show-checkbox {
     margin-right: 0.5vw;
+}
+
+.fluid-container {
+    width: 83%;
+    margin: auto;
+}
+
+.card-container .row {
+    margin: 0 !important
+}
+
+.container-title {
+    background-color: rgb(235, 232, 232);
+    height: 5vh;
+}
+
+.container-title h5 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.container-body {
+    background-color: white;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding: 1.5vh 0 1.5vh 0;
+}
+
+.container-body .col {
+    margin-top: 0 !important;
+}
+
+.container-body::-webkit-scrollbar {
+    height: 1vh;
+}
+
+.container-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.container-body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.container-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
