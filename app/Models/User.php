@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Country::class);
     }
+    public function transactionHeader()
+    {
+        return $this->belongsTo(TransactionHeader::class);
+    }
 }
