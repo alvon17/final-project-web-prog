@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [AuthController::class, 'dashboard']);
 Route::get('/', [ProductController::class,'product']);
 Route::get('/category/{id}', [ProductController::class, 'category']);
+Route::get('/detail/{id}', [ProductController::class,'detail']);
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::post('/custom-login', [AuthController::class, 'customLogin']);

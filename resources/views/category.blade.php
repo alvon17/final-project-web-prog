@@ -23,7 +23,7 @@
                 // dd($i->photo)
             ?>
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" onclick="window.location='{{url('detail', ['id'=>$i->id])}}';">
                         <img src="{{ asset('/image/'.$i->photo) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{$i->name}}</h5>
