@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', [AuthController::class, 'dashboard']);
+Route::get('/', [ProductController::class,'product']);
+Route::get('/category/{id}', [ProductController::class, 'category']);
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::post('/custom-login', [AuthController::class, 'customLogin']);

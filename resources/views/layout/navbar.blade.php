@@ -13,10 +13,11 @@
                         Category
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        @foreach($categories as $category)
+                        <li><a class="dropdown-item" href="{{url('category', ['id'=>$category->id])}}">{{$category->name}}</a></li>
+                        @endforeach
                     </ul>
+
                 </li>
                 @auth
                     <li class="nav-item w-100">

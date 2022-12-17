@@ -2,6 +2,7 @@
 
 @section('title', 'home')
 @section('content')
+
     <div class="input-group justify-content-center pb-4">
         <div class="form-outline search-form-outline">
             <input type="search" id="form1" class="form-control search-form-control" />
