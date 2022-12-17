@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Category;
-use App\Models\Product;
 
 class AuthController extends Controller
 {
@@ -60,7 +58,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|email|unique:users|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',
+            'email' => 'required|email:rfc,dns|unique:users',
             'passwords' => 'required|min:8',
             'confirm_password' => 'required|same:passwords',
             'gender' => 'required',
