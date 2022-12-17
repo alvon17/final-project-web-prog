@@ -123,3 +123,8 @@ body {
 .accordion-item {
     margin-bottom: 4vh;
 }
+
+.card-link {
+    text-decoration: none;
+    color: black;
+}

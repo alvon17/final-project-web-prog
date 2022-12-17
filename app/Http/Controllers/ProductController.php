@@ -15,17 +15,18 @@ class ProductController extends Controller
         return view('index', ['products' => $products, 'categories' => $categories]);
     }
 
-    public function category($id)
+    public function category($name)
     {
         $categories = Category::all();
-        $category = Category::find($id);
+        $category = Category::where('name', $name)->first();
 
         return view('category', ['category' => $category, 'categories' => $categories]);
     }
 
-    public function detail ($id) {
+    public function detail($id)
+    {
         $products = Product::find($id);
         $categories = Category::all();
-        return view('detail', ['products'=>$products, 'categories'=>$categories]);
+        return view('detail', ['products' => $products, 'categories' => $categories]);
     }
 }

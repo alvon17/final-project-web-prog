@@ -13,8 +13,10 @@
                         Category
                     </a>
                     <ul class="dropdown-menu">
-                        @foreach($categories as $category)
-                        <li><a class="dropdown-item" href="{{url('category', ['id'=>$category->id])}}">{{$category->name}}</a></li>
+                        @foreach ($categories as $category)
+                            <li><a class="dropdown-item"
+                                    href="{{ url('category', ['name' => $category->name]) }}">{{ $category->name }}</a>
+                            </li>
                         @endforeach
                     </ul>
 
