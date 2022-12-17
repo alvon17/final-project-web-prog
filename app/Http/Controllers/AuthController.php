@@ -11,18 +11,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Category;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        $categories = Category::all();
+        return view('auth.login', ['categories' => $categories]);
     }
 
     public function registration()
     {
         $countries = Country::all();
-        return view('auth.registration', ['countries' => $countries]);
+        $categories = Category::all();
+        return view('auth.registration', ['countries' => $countries, 'categories' => $categories]);
     }
 
     public function customLogin(Request $request)
@@ -56,7 +59,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|email|unique:users|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',
+            'email' => 'required|email:rfc,dns|unique:users',
             'passwords' => 'required|min:8',
             'confirm_password' => 'required|same:passwords',
             'gender' => 'required',
