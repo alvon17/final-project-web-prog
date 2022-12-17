@@ -93,7 +93,7 @@ class AuthController extends Controller
         // return redirect('login')->withSuccess('You are not allowed to access');
         $categories = Category::all();
         $products = Product::all();
-        return view('index');
+        return view('index', ['products' => $products, 'categories' => $categories]);
     }
 
     public function profile()

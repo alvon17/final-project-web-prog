@@ -20,8 +20,8 @@ Route::get('/', [ProductController::class, 'product']);
 
 Route::get('/category/{name}', [ProductController::class, 'category']);
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
-Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::get('/dashboard', [ProductController::class, 'product']);
+Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::post('/custom-login', [AuthController::class, 'customLogin']);
 Route::get('/registration', [AuthController::class, 'registration']);
