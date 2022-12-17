@@ -138,4 +138,14 @@ class AuthController extends Controller
 
         return redirect('login');
     }
+
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        $name = $request->search;
+        $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
+        // dd($products);
+
+        return view('search', ['categories' => $categories, 'products' => $products]);
+    }
 }

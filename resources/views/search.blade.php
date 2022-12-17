@@ -1,8 +1,7 @@
 @extends('dashboard')
 
-@section('title', 'category')
+@section('title', 'search')
 @section('content')
-
     <form class="input-group justify-content-center pb-4" action="{{ route('search') }}" method="GET">
         <div class="form-outline search-form-outline">
             <input type="text" id="form1" name="search" class="form-control search-form-control" />
@@ -14,7 +13,7 @@
 
     <div class="fluid-container card-container mt-3">
         <div class="row container-title d-flex align-items-center">
-            <h5>{{ $category->name }}</h5>
+            <h5>Search Result</h5>
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 container-body-detail">
@@ -34,6 +33,5 @@
                 </div>
             @endforeach
         </div>
-        {!! $products->render() !!}
     </div>
 @endsection

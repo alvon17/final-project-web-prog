@@ -34,3 +34,5 @@ Route::get('/add', [AuthController::class, 'add']);
 Route::get('/update', [AuthController::class, 'update']);
 Route::get('/cart', [AuthController::class, 'cart']);
 Route::get('/transaction', [AuthController::class, 'transaction']);
+
+Route::get('/search', [AuthController::class, 'search'])->name('search');

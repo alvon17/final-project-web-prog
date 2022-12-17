@@ -3,16 +3,19 @@
 @section('title', 'home')
 @section('content')
 
-    <div class="input-group justify-content-center pb-4">
+    <form class="input-group justify-content-center pb-4" action="{{ route('search') }}" method="GET">
         <div class="form-outline search-form-outline">
-            <input type="search" id="form1" class="form-control search-form-control" />
+            <input type="text" id="form1" name="search" class="form-control search-form-control" />
         </div>
-        <button type="button" class="btn btn-primary search-icon">
+        <button type="submit" class="btn btn-primary search-icon">
             <i class="fas fa-search"></i>
         </button>
-    </div>
+    </form>
 
     @foreach ($categories as $cat)
+        {{-- @php
+            dd($cat);
+        @endphp --}}
         <div class="fluid-container card-container mt-3">
             <div class="row container-title d-flex align-items-center">
                 <h5>{{ $cat->name }}</h5>
