@@ -19,8 +19,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $category = Category::where('name', $name)->first();
+        $products = $category->product()->paginate(10);
 
-        return view('category', ['category' => $category, 'categories' => $categories]);
+        return view('category', ['category' => $category, 'categories' => $categories, 'products' => $products]);
     }
 
     public function detail($id)

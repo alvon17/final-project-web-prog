@@ -18,7 +18,7 @@
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 container-body-detail">
-            @foreach ($category->product as $i)
+            @foreach ($products as $i)
                 <div class="col">
                     <a href="{{ url('detail', ['id' => $i->id]) }}" style="text-decoration:none; color:black">
                         <div class="card h-100">
@@ -34,5 +34,6 @@
                 </div>
             @endforeach
         </div>
+        {!! $products->links() !!}
     </div>
 @endsection
