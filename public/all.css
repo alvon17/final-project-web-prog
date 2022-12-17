@@ -128,3 +128,11 @@ body {
     text-decoration: none;
     color: black;
 }
+
+ul.pagination{
+    margin-top: 10pt;
+    display: flex;
+    justify-content: end;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -11,18 +11,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Category;
+use App\Models\Product;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        $categories = Category::all();
+        return view('auth.login', ['categories' => $categories]);
     }
 
     public function registration()
     {
         $countries = Country::all();
-        return view('auth.registration', ['countries' => $countries]);
+        $categories = Category::all();
+        return view('auth.registration', ['countries' => $countries, 'categories' => $categories]);
     }
 
     public function customLogin(Request $request)
@@ -42,7 +46,7 @@ class AuthController extends Controller
                 Cookie::queue(Cookie::make('password', $credentials['password'], 120));
             }
 
-            return redirect()->intended('dashboard')
+            return redirect()->intended('/dashboard')
                 ->withSuccess('Signed in');
         }
 
@@ -87,22 +91,21 @@ class AuthController extends Controller
         // }
 
         // return redirect('login')->withSuccess('You are not allowed to access');
+        $categories = Category::all();
+        $products = Product::all();
         return view('index');
     }
 
-    public function detail()
+    public function profile()
     {
-        return view('detail');
+        $categories = Category::all();
+        $products = Product::all();
+        return view('profile', ['products' => $products, 'categories' => $categories]);
     }
 
     public function manage()
     {
         return view('manage');
-    }
-
-    public function profile()
-    {
-        return view('profile');
     }
 
     public function add()

@@ -34,6 +34,6 @@
                 </div>
             @endforeach
         </div>
-        {!! $products->links() !!}
+        {!! $products->render() !!}
     </div>
 @endsection

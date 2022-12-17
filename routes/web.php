@@ -17,15 +17,17 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [AuthController::class, 'dashboard']);
 Route::get('/', [ProductController::class, 'product']);
+
 Route::get('/category/{name}', [ProductController::class, 'category']);
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
+Route::get('/dashboard', [ProductController::class, 'product']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::post('/custom-login', [AuthController::class, 'customLogin']);
 Route::get('/registration', [AuthController::class, 'registration']);
 Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
 Route::get('/logout', [AuthController::class, 'logout']);
-Route::get('/detail', [AuthController::class, 'detail']);
+
 Route::get('/manage', [AuthController::class, 'manage']);
 Route::get('/profile', [AuthController::class, 'profile']);
 Route::get('/add', [AuthController::class, 'add']);
