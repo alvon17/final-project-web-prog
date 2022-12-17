@@ -67,6 +67,12 @@ body {
     padding: 1.5vh 0 1.5vh 0;
 }
 
+.container-body-detail {
+    background-color: white;
+    flex-wrap: wrap;
+    padding: 1.5vh 0 1.5vh 0;
+}
+
 .container-body .col {
     margin-top: 0 !important;
 }

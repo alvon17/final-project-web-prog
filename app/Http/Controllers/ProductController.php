@@ -22,4 +22,10 @@ class ProductController extends Controller
 
         return view('category', ['category' => $category, 'categories' => $categories]);
     }
+
+    public function detail ($id) {
+        $products = Product::find($id);
+        $categories = Category::all();
+        return view('detail', ['products'=>$products, 'categories'=>$categories]);
+    }
 }
