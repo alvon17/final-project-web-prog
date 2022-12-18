@@ -17,7 +17,7 @@ class CreateTransactionDetailTable extends Migration
             $table->id();
             $table->foreignId('transaction_id');
             $table->foreignId('product_id');
-            $table->int('quantity');
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transaction_header');
