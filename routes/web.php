@@ -29,8 +29,11 @@ Route::post('/custom-registration', [AuthController::class, 'customRegistration'
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/manage', [AuthController::class, 'manage']);
+Route::get('/manage/delete/{id}', [AuthController::class, 'deleteProduct']);
+
 Route::get('/profile', [AuthController::class, 'profile']);
 Route::get('/add', [AuthController::class, 'add']);
+Route::post('/custom-add-product', [AuthController::class, 'customAddProduct']);
 Route::get('/update', [AuthController::class, 'update']);
 Route::get('/cart', [AuthController::class, 'cart']);
 Route::get('/transaction', [AuthController::class, 'transaction']);

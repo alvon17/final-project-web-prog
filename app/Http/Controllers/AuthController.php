@@ -13,6 +13,9 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductCategory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class AuthController extends Controller
 {
@@ -105,12 +108,58 @@ class AuthController extends Controller
 
     public function manage()
     {
-        return view('manage');
+        $categories = Category::all();
+        $products = Product::all();
+        return view('manage', ['products' => $products, 'categories' => $categories]);
     }
 
     public function add()
     {
-        return view('add');
+        $categories = Category::all();
+        return view('add', ['categories' => $categories]);
+    }
+
+    public function customAddProduct(Request $data)
+    {
+        $this -> validate($data, [
+            'name' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'price' => 'required|integer',
+            'file' => 'required|file|image|mimes:jpeg,png,jpg',
+        ]);
+
+        $file = $data -> file ('file');
+        $file_name = $file -> getClientOriginalName();
+        $upload_path = 'image';
+        $file -> move ($upload_path, $file_name);
+
+        Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'photo' => $file_name,
+        ]);
+
+        ProductCategory::create([
+            'product_id' => DB::table('products')->latest('created_at')->first()->id,
+            'category_id' => $data['category']
+        ]);
+
+        Session::flash('message', 'Add Product Successful');
+
+        return redirect('manage');
+    }
+
+    public function deleteProduct ($id) {
+        $product = Product::where ('id', $id)->first ();
+
+        File::delete ('image/' . $product->photo);
+
+        ProductCategory::where ('product_id', $id) -> first() -> delete();
+        Product::where ('id', $id) -> first () -> delete();
+
+        return redirect() -> back();
     }
 
     public function update()

@@ -23,7 +23,7 @@
                 </li>
                 @auth
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="#">Manage Product</a>
+                        <a class="nav-link" href="/manage">Manage Product</a>
                     </li>
                 @endauth
                 <div class="d-lg-flex w-100 justify-content-end">
