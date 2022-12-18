@@ -121,7 +121,7 @@ class AuthController extends Controller
 
     public function customAddProduct(Request $data)
     {
-        $this -> validate($data, [
+        $this->validate($data, [
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
@@ -129,10 +129,10 @@ class AuthController extends Controller
             'file' => 'required|file|image|mimes:jpeg,png,jpg',
         ]);
 
-        $file = $data -> file ('file');
-        $file_name = $file -> getClientOriginalName();
+        $file = $data->file('file');
+        $file_name = $file->getClientOriginalName();
         $upload_path = 'image';
-        $file -> move ($upload_path, $file_name);
+        $file->move($upload_path, $file_name);
 
         Product::create([
             'name' => $data['name'],
@@ -151,15 +151,16 @@ class AuthController extends Controller
         return redirect('manage');
     }
 
-    public function deleteProduct ($id) {
-        $product = Product::where ('id', $id)->first ();
+    public function deleteProduct($id)
+    {
+        $product = Product::where('id', $id)->first();
 
-        File::delete ('image/' . $product->photo);
+        File::delete('image/' . $product->photo);
 
-        ProductCategory::where ('product_id', $id) -> first() -> delete();
-        Product::where ('id', $id) -> first () -> delete();
+        ProductCategory::where('product_id', $id)->first()->delete();
+        Product::where('id', $id)->first()->delete();
 
-        return redirect() -> back();
+        return redirect()->back();
     }
 
     public function update()
@@ -193,8 +194,16 @@ class AuthController extends Controller
         $categories = Category::all();
         $name = $request->search;
         $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
-        // dd($products);
 
         return view('search', ['categories' => $categories, 'products' => $products]);
+    }
+
+    public function manageSearch(Request $request)
+    {
+        $categories = Category::all();
+        $name = $request->search;
+        $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
+
+        return view('manage', ['categories' => $categories, 'products' => $products]);
     }
 }

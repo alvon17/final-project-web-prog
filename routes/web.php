@@ -30,6 +30,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/manage', [AuthController::class, 'manage']);
 Route::get('/manage/delete/{id}', [AuthController::class, 'deleteProduct']);
+Route::get('/manage/search', [AuthController::class, 'manageSearch'])->name('manageSearch');
 
 Route::get('/profile', [AuthController::class, 'profile']);
 Route::get('/add', [AuthController::class, 'add']);

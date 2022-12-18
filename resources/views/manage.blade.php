@@ -6,7 +6,7 @@
     @if (session()->has('message'))
         @foreach (explode('-', session('message')) as $message)
             <script>
-                Swal.fire('{{$message}}')
+                Swal.fire('{{ $message }}')
             </script>
         @endforeach
     @endif
@@ -14,24 +14,24 @@
     <div class="container" style="width: 60%;">
         <div class="row justify-content-between pb-3">
             <div class="col-5">
-                <div class="input-group">
+                <form class="input-group" action="{{ route('manageSearch') }}" method="GET">
                     <div class="form-outline search-form-outline">
                         <input type="search" placeholder="Product Name" id="form1"
-                            class="form-control search-form-control" />
+                            class="form-control search-form-control" name="search" />
                     </div>
-                    <button type="button" class="btn btn-primary search-icon ">
+                    <button type="submit" class="btn btn-primary search-icon ">
                         <i class="fas fa-search"></i>
                     </button>
-                </div>
+                </form>
             </div>
             <div class="col-3">
                 <a href="{{ url('add') }}" style="text-decoration: none;">
                     <div class="input-group">
-                        
+
                         <button type="button" class="btn btn-secondary ms-auto search-icon">Add Product
                             <i style="color:white" class="fas fa-plus"></i>
                         </button>
-                        
+
                     </div>
                 </a>
             </div>
@@ -69,7 +69,7 @@
                         </a>
                     </div>
                 </div>
-            </div>     
+            </div>
         @endforeach
     </div>
 
