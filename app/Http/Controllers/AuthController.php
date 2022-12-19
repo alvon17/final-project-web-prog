@@ -109,7 +109,7 @@ class AuthController extends Controller
     public function manage()
     {
         $categories = Category::all();
-        $products = Product::all();
+        $products = Product::paginate(10);
         return view('manage', ['products' => $products, 'categories' => $categories]);
     }
 
@@ -153,9 +153,9 @@ class AuthController extends Controller
 
     public function deleteProduct($id)
     {
-        $product = Product::where('id', $id)->first();
+        $products = Product::where('id', $id)->first();
 
-        File::delete('image/' . $product->photo);
+        File::delete('image/' . $products->photo);
 
         ProductCategory::where('product_id', $id)->first()->delete();
         Product::where('id', $id)->first()->delete();
@@ -163,9 +163,43 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
-    public function update()
+    public function update($id)
     {
-        return view('update');
+        $products = Product::where('id', $id)->first();
+        $categories = Category::all();
+        return view('update', ['categories' => $categories, 'id' => $id, 'products' => $products]);
+    }
+
+    public function edit (Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'price' => 'required|integer',
+            'file' => 'required|file|image|mimes:jpeg,png,jpg',
+        ]);
+
+        $products = Product::where('id', $request->id)->first();
+        File::delete('image/' . $products->photo);
+
+        $file = $request->file('file');
+        $file_name = $file->getClientOriginalName();
+        $upload_path = 'image';
+        $file->move($upload_path, $file_name);
+
+        DB::table ('products')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'photo' => $file_name
+        ]);
+
+        DB::table ('products_categories')->where('product_id', $request->id)->update ([
+            'category_id' => $request->category
+        ]);
+
+        return redirect('/manage');
     }
 
     public function cart()
