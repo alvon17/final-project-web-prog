@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $category = Category::where('name', $name)->first();
-        $products = $category->product()->paginate(10);
+        $products = Product::where('category_id', $category->id)->paginate(10);
 
         return view('category', ['category' => $category, 'categories' => $categories, 'products' => $products]);
     }
