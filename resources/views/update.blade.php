@@ -34,11 +34,19 @@
                                     <select class="form-select" aria-label="Default select example" name="category">
                                         <option selected hidden disabled value="">Select a Category</option>
                                         @foreach ($categories as $category)
-                                            @if (old('category') == $category->id)
-                                                <option value="{{ $category->id }}" selected> {{ $category->name }} </option>
+                                            @if(old('category') != "")
+                                                @if (old('category') == $category->id)
+                                                    <option value="{{ $category->id }}" selected> {{ $category->name }} </option>
+                                                @else
+                                                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                                @endif
                                             @else
-                                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
-                                            @endif
+                                                @if ($products->category_id == $category->id)
+                                                    <option value="{{ $category->id }}" selected> {{ $category->name }} </option>
+                                                @else
+                                                    <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                                @endif
+                                            @endif                                         
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category'))

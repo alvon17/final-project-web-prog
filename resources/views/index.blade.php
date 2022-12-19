@@ -13,9 +13,7 @@
     </form>
 
     @foreach ($categories as $cat)
-        {{-- @php
-            dd($cat);
-        @endphp --}}
+        
         <div class="fluid-container card-container mt-3">
             <div class="row container-title d-flex align-items-center">
                 <h5>{{ $cat->name }}</h5>
@@ -23,8 +21,7 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 container-body">
                 @foreach ($products as $product)
-                    @foreach ($product->category as $category)
-                        @if ($category->name == $cat->name)
+                        @if ($cat->id == $product->category_id)
                             <div class="col">
                                 <a class="card-link" href="{{ url('detail', ['id' => $product->id]) }}">
                                     <div class="card h-100">
@@ -38,9 +35,9 @@
                                 </a>
                             </div>
                         @endif
-                    @endforeach
                 @endforeach
             </div>
         </div>
     @endforeach
+    
 @endsection

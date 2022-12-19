@@ -96,6 +96,7 @@ class AuthController extends Controller
         // return redirect('login')->withSuccess('You are not allowed to access');
         $categories = Category::all();
         $products = Product::all();
+        // dd($categories);
         return view('index', ['products' => $products, 'categories' => $categories]);
     }
 
@@ -136,15 +137,16 @@ class AuthController extends Controller
 
         Product::create([
             'name' => $data['name'],
+            'category_id' => $data['category'],
             'description' => $data['description'],
             'price' => $data['price'],
             'photo' => $file_name,
         ]);
 
-        ProductCategory::create([
-            'product_id' => DB::table('products')->latest('created_at')->first()->id,
-            'category_id' => $data['category']
-        ]);
+        // ProductCategory::create([
+        //     'product_id' => DB::table('products')->latest('created_at')->first()->id,
+        //     'category_id' => $data['category']
+        // ]);
 
         Session::flash('message', 'Add Product Successful');
 
@@ -157,7 +159,7 @@ class AuthController extends Controller
 
         File::delete('image/' . $products->photo);
 
-        ProductCategory::where('product_id', $id)->first()->delete();
+        // ProductCategory::where('product_id', $id)->first()->delete();
         Product::where('id', $id)->first()->delete();
 
         return redirect()->back();
@@ -190,14 +192,15 @@ class AuthController extends Controller
 
         DB::table ('products')->where('id', $request->id)->update([
             'name' => $request->name,
+            'category_id' => $request->category,
             'description' => $request->description,
             'price' => $request->price,
             'photo' => $file_name
         ]);
 
-        DB::table ('products_categories')->where('product_id', $request->id)->update ([
-            'category_id' => $request->category
-        ]);
+        // DB::table ('products_categories')->where('product_id', $request->id)->update ([
+        //     'category_id' => $request->category
+        // ]);
 
         return redirect('/manage');
     }
