@@ -129,10 +129,62 @@ body {
     color: black;
 }
 
-ul.pagination{
+ul.pagination {
     margin-top: 10pt;
     display: flex;
     justify-content: end;
     font-size: 12px;
     font-weight: bold;
+}
+
+.detail-card-body {
+    width: 70%;
+}
+
+@media screen and (max-width: 991px) {
+    .detail-card-body {
+        width: 100%;
+    }
+
+    .manage-container {
+        width: 90% !important;
+    }
+
+    .manage-container .image-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 3vh;
+    }
+
+    .manage-container .image-left {
+        border-radius: 0;
+    }
+
+    .manage-card-body {
+        text-align: center;
+    }
+
+    .manage-container .card-body {
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .row-manage {
+        display: block !important;
+    }
+
+    .manage-container .input-group-header {
+        width: 100% !important;
+        margin-bottom: 2vh;
+    }
+
+    .manage-container .input-group-header .input-group {
+        justify-content: center;
+
+    }
+
+    .manage-container .add-button {
+        margin: 0 !important;
+    }
 }

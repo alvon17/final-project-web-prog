@@ -21,11 +21,17 @@
                     </ul>
 
                 </li>
-                @auth
-                    <li class="nav-item w-100">
-                        <a class="nav-link" href="/manage">Manage Product</a>
-                    </li>
-                @endauth
+                {{-- @php
+                    dd(Auth::user());
+                @endphp --}}
+                @guest()
+                @else
+                    @if (Auth::user()->role == 'admin')
+                        <li class="nav-item w-100">
+                            <a class="nav-link" href="/manage">Manage Product</a>
+                        </li>
+                    @endif
+                @endguest
                 <div class="d-lg-flex w-100 justify-content-end">
                     @guest()
                         <li class="nav-item">

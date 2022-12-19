@@ -80,6 +80,7 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'date_of_birth' => $data['date_of_birth'],
             'country_id' => $data['country_id'],
+            'role' => 'user',
         ]);
 
         Session::flash('message', 'Registration Successful');

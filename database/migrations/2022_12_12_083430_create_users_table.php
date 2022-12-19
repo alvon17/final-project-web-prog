@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('gender');
             $table->date('date_of_birth');
             $table->foreignId('country_id');
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
 

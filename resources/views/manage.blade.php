@@ -11,9 +11,9 @@
         @endforeach
     @endif
 
-    <div class="container" style="width: 60%;">
-        <div class="row justify-content-between pb-3">
-            <div class="col-5">
+    <div class="container manage-container" style="width: 60%;">
+        <div class="row justify-content-between pb-3 row-manage">
+            <div class="col-5 input-group-header">
                 <form class="input-group" action="{{ route('manageSearch') }}" method="GET">
                     <div class="form-outline search-form-outline">
                         <input type="search" placeholder="Product Name" id="form1"
@@ -24,25 +24,26 @@
                     </button>
                 </form>
             </div>
-            <div class="col-3">
-                <a href="{{ url('add') }}" style="text-decoration: none;">
-                    <div class="input-group">
+            <div class="col-3 input-group-header">
+                <div class="input-group">
+                    <a href="{{ url('add') }}" style="text-decoration: none;">
 
-                        <button type="button" class="btn btn-secondary ms-auto search-icon">Add Product
+                        <button type="button" class="btn btn-secondary ms-auto search-icon add-button">Add Product
                             <i style="color:white" class="fas fa-plus"></i>
                         </button>
 
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
 
         @foreach ($products as $product)
-            <div class="card flex-row mx-auto mb-3">
+            <div class="card flex-lg-row mx-auto mb-3">
                 <div class="image-container">
-                    <img class="image-left" src="{{ asset('image/' . $product->photo) }}" width="300px" height="200px">
+                    <img class="img-fluid image-left" src="{{ asset('image/' . $product->photo) }}" width="300px"
+                        height="200px">
                 </div>
-                <div class="card-body">
+                <div class="card-body manage-card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                 </div>
                 <div class="card-body d-flex justify-content-end">
