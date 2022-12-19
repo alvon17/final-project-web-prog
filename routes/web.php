@@ -29,13 +29,14 @@ Route::post('/custom-registration', [AuthController::class, 'customRegistration'
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/manage', [AuthController::class, 'manage']);
+Route::get('/add', [AuthController::class, 'add']);
+Route::get('/manage/update/{id}', [AuthController::class, 'update']);
+Route::post('/manage/edit', [AuthController::class, 'edit']);
 Route::get('/manage/delete/{id}', [AuthController::class, 'deleteProduct']);
 Route::get('/manage/search', [AuthController::class, 'manageSearch'])->name('manageSearch');
 
 Route::get('/profile', [AuthController::class, 'profile']);
-Route::get('/add', [AuthController::class, 'add']);
 Route::post('/custom-add-product', [AuthController::class, 'customAddProduct']);
-Route::get('/update', [AuthController::class, 'update']);
 Route::get('/cart', [AuthController::class, 'cart']);
 Route::get('/transaction', [AuthController::class, 'transaction']);
 
