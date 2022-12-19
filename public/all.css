@@ -141,6 +141,10 @@ ul.pagination {
     width: 70%;
 }
 
+.manage-container .input-group-header .add-product {
+    justify-content: end;
+}
+
 @media screen and (max-width: 991px) {
     .detail-card-body {
         width: 100%;

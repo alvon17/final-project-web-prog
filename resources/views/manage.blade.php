@@ -24,8 +24,8 @@
                     </button>
                 </form>
             </div>
-            <div class="col-3 input-group-header">
-                <div class="input-group">
+            <div class="col-4 input-group-header">
+                <div class="input-group add-product">
                     <a href="{{ url('add') }}" style="text-decoration: none;">
 
                         <button type="button" class="btn btn-secondary ms-auto search-icon add-button">Add Product
