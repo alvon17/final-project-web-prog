@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -41,3 +42,7 @@ Route::get('/cart', [AuthController::class, 'cart']);
 Route::get('/transaction', [AuthController::class, 'transaction']);
 
 Route::get('/search', [AuthController::class, 'search'])->name('search');
+
+Route::get('/cart', [CartController::class, 'cart']);
+Route::post('/cart/{product}', [CartController::class, 'addToCart']);
+Route::get('/cart/delete/{id}', [CartController::class, 'removeFromCart']);

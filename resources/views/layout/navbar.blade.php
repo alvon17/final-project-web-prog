@@ -41,7 +41,14 @@
                             <a class="nav-link" href="{{ url('registration') }}">Register</a>
                         </li>
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown d-flex">
+                            @if (Auth::user()->role == 'user')
+                                <div class="shopping-cart d-flex align-items-center">
+                                    <a href="{{ url('cart') }}">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            @endif
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 {{ Auth::user()->name }}

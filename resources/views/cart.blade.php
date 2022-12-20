@@ -2,59 +2,62 @@
 
 @section('title', 'cart')
 @section('content')
+    @if (session()->has('message'))
+        @foreach (explode('-', session('message')) as $message)
+            <script>
+                Swal.fire('{{ $message }}')
+            </script>
+        @endforeach
+    @endif
+
+    @php
+        $total = 0;
+    @endphp
 
     <div class="container" style="width: 50%;">
-        <div class="card flex-row mx-auto mt-3">
-            <div class="image-container">
-                <img class="image-left" src="{{ asset('/image/gerry.jpg') }}" width="200px" height="200px">
+        @if (!$cart)
+            <div style="text-align: center;">
+                <h3>Cart is Empty</h3>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Gerry Guinardi</h5>
-                <p> Quantity : 15 </p>
-                <p> Total Price : IDR 312314 </p>
-            </div>
-            <div class="card-body d-flex justify-content-end">
-                <div class="ms-2">
-                    <button type="button" class="btn btn-outline-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-trash" viewBox="0 0 16 16">
-                            <path
-                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                            <path fill-rule="evenodd"
-                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                        </svg>
-                    </button>
+        @else
+            @foreach ($cart as $c)
+                <div class="card flex-row mx-auto mt-3">
+                    <div class="image-container">
+                        <img class="image-left" src="{{ asset('image/' . $c['photo']) }}" width="200px" height="200px">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $c['name'] }}</h5>
+                        <p> Quantity : {{ $c['quantity'] }} </p>
+                        <p> Total Price : {{ $c['quantity'] * $c['price'] }} </p>
+                        @php
+                            $total = $total + $c['quantity'] * $c['price'];
+                        @endphp
+                    </div>
+                    <div class="card-body d-flex justify-content-end">
+                        <div class="ms-2">
+                            <a href="cart/delete/{{ $c['id'] }}" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="card flex-row mx-auto mt-3">
-            <div class="image-container">
-                <img class="image-left" src="{{ asset('/image/gerry.jpg') }}" width="200px" height="200px">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Gerry Guinardi</h5>
-                <p> Quantity : 15 </p>
-                <p> Total Price : IDR 312314 </p>
-            </div>
-            <div class="card-body d-flex justify-content-end">
-                <div class="ms-2">
-                    <button type="button" class="btn btn-outline-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-trash" viewBox="0 0 16 16">
-                            <path
-                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                            <path fill-rule="evenodd"
-                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                        </svg>
-                    </button>
+            @endforeach
+            <footer class="fixed-bottom" style="background-color: white">
+                <div class="row w-50 mx-auto">
+                    <div class="col d-flex justify-content-end align-items-center">
+                        Total Price: IDR {{ $total }}
+                    </div>
+                    <div class="col d-flex justify-content-start align-items-center">
+                        <a href="#" class="btn btn-outline-success">Purchase</a>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </footer>
+        @endif
     </div>
-
-
-
-
-
 @endsection

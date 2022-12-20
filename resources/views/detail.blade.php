@@ -38,7 +38,9 @@
                         height="300px">
                 </div>
                 <div class="card-body detail-card-body">
-                    <form>
+                    <form method="POST" action="/cart/{{ $products->id }}">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $products->id }}">
                         <div class="row mb-3">
                             <h5 class="card-title detail-card-title">{{ $products->name }}</h5>
                         </div>
@@ -58,12 +60,12 @@
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Qty</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputQty">
+                                    <input type="text" class="form-control" id="inputQty" name="quantity">
                                 </div>
                             </div>
                             <br>
 
-                            <button type="submit" class="btn btn-outline-secondary">Purchase</button>
+                            <button type="submit" class="btn btn-outline-secondary">Add to Cart</button>
                         @endif
 
                     </form>

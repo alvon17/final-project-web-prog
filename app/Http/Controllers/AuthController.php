@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Country;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +12,6 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -41,8 +39,8 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            Session::put('username', $credentials['email']);
-            Session::put('password', $credentials['password']);
+            session()->put('username', $credentials['email']);
+            session()->put('password', $credentials['password']);
 
             if ($request->has('remember')) {
                 Cookie::queue(Cookie::make('username', $credentials['email'], 120));
@@ -83,7 +81,7 @@ class AuthController extends Controller
             'role' => 'user',
         ]);
 
-        Session::flash('message', 'Registration Successful');
+        session()->flash('message', 'Registration Successful');
 
         return redirect('login');
     }
@@ -97,7 +95,6 @@ class AuthController extends Controller
         // return redirect('login')->withSuccess('You are not allowed to access');
         $categories = Category::all();
         $products = Product::all();
-        // dd($categories);
         return view('index', ['products' => $products, 'categories' => $categories]);
     }
 
@@ -149,7 +146,7 @@ class AuthController extends Controller
         //     'category_id' => $data['category']
         // ]);
 
-        Session::flash('message', 'Add Product Successful');
+        session()->flash('message', 'Add Product Successful');
 
         return redirect('manage');
     }
@@ -173,7 +170,7 @@ class AuthController extends Controller
         return view('update', ['categories' => $categories, 'id' => $id, 'products' => $products]);
     }
 
-    public function edit (Request $request)
+    public function edit(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -191,7 +188,7 @@ class AuthController extends Controller
         $upload_path = 'image';
         $file->move($upload_path, $file_name);
 
-        DB::table ('products')->where('id', $request->id)->update([
+        DB::table('products')->where('id', $request->id)->update([
             'name' => $request->name,
             'category_id' => $request->category,
             'description' => $request->description,
@@ -221,7 +218,7 @@ class AuthController extends Controller
         Cookie::queue(Cookie::forget('username'));
         Cookie::queue(Cookie::forget('password'));
 
-        Session::flush();
+        session()->flush();
         Auth::logout();
 
         return redirect('login');

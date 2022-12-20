@@ -145,6 +145,22 @@ ul.pagination {
     justify-content: end;
 }
 
+.shopping-cart {
+    margin: 0 1vw 0 1vw;
+}
+
+.fa-shopping-cart {
+    color: gray;
+}
+
+footer {
+    padding: 2vh;
+}
+
+footer .row {
+    width: 40% !important;
+}
+
 @media screen and (max-width: 991px) {
     .detail-card-body {
         width: 100%;
