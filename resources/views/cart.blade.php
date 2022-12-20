@@ -14,7 +14,7 @@
         $total = 0;
     @endphp
 
-    <div class="container" style="width: 50%;">
+    <div class="container mb-5" style="width: 50%;">
         @if (!$cart)
             <div style="text-align: center;">
                 <h3>Cart is Empty</h3>
@@ -48,6 +48,7 @@
                     </div>
                 </div>
             @endforeach
+            <div style="margin-bottom: 5rem"></div>
             <footer class="fixed-bottom" style="background-color: white">
                 <div class="row w-50 mx-auto">
                     <div class="col d-flex justify-content-end align-items-center">
