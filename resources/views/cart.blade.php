@@ -55,7 +55,10 @@
                         Total Price: IDR {{ $total }}
                     </div>
                     <div class="col d-flex justify-content-start align-items-center">
-                        <a href="#" class="btn btn-outline-success">Purchase</a>
+                        <form method="POST" action="/purchase">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-success">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </footer>

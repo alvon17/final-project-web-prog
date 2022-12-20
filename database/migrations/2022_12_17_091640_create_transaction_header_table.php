@@ -17,6 +17,8 @@ class CreateTransactionHeaderTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->date('date');
+            $table->integer('total_products');
+            $table->integer('total_price');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

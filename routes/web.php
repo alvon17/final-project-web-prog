@@ -46,3 +46,4 @@ Route::get('/search', [AuthController::class, 'search'])->name('search');
 Route::get('/cart', [CartController::class, 'cart']);
 Route::post('/cart/{product}', [CartController::class, 'addToCart']);
 Route::get('/cart/delete/{id}', [CartController::class, 'removeFromCart']);
+Route::post('/purchase', [CartController::class, 'purchase']);

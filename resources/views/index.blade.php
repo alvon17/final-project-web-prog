@@ -3,6 +3,14 @@
 @section('title', 'home')
 @section('content')
 
+    @if (session()->has('message'))
+        @foreach (explode('-', session('message')) as $message)
+            <script>
+                Swal.fire('{{$message}}')
+            </script>
+        @endforeach
+    @endif
+
     <form class="input-group justify-content-center pb-4" action="{{ route('search') }}" method="GET">
         <div class="form-outline search-form-outline">
             <input type="text" id="form1" name="search" class="form-control search-form-control" />

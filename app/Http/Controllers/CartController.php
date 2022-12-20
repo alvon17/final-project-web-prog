@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\TransactionDetail;
+use App\Models\TransactionHeader;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -59,5 +62,41 @@ class CartController extends Controller
         session()->put('cart', $cart);
 
         return redirect('cart');
+    }
+
+    public function purchase(){
+        $cart = session('cart');
+
+        $total_products = 0;
+        $total_price = 0;
+
+        foreach($cart as $c){
+            $total_products += $c['quantity'];
+            $total_price += $c['quantity'] * $c['price'];
+        }
+
+        $transactionHeader = TransactionHeader::create([
+            'user_id' => auth()->user()->id,
+            'date' => Carbon::now(),
+            'total_products' => $total_products,
+            'total_price' => $total_price,
+        ]);
+
+        $headerId = $transactionHeader->id;
+
+        foreach($cart as $c){
+            TransactionDetail::create([
+                'transaction_id' => $headerId,
+                'product_id' => $c['id'],
+                'quantity' => $c['quantity'],
+                'sub_price' => $c['quantity'] * $c['price'],
+            ]);
+        }
+
+        session()->forget('cart');
+
+        session()->flash('message', 'Transaction Success');
+
+        return redirect('/dashboard');
     }
 }
