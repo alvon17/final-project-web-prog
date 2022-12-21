@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\TransactionDetail;
 use App\Models\TransactionHeader;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class CartController extends Controller
 {
@@ -98,5 +99,15 @@ class CartController extends Controller
         session()->flash('message', 'Transaction Success');
 
         return redirect('/dashboard');
+    }
+
+    public function history () {
+        $categories = Category::all();
+        $transactionHeader = TransactionHeader::all ();
+        
+        $count = $transactionHeader->where('user_id', '=', auth()->user()->id)->pluck('id')->toArray();
+        $transactionDetail = TransactionDetail::all()->whereIn('transaction_id', $count);
+    
+        return view('transaction', ['categories' => $categories, 'trdetail' => $transactionDetail, 'count'=>$count, 'transactionHeader'=>$transactionHeader]);
     }
 }

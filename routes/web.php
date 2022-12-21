@@ -47,3 +47,5 @@ Route::get('/cart', [CartController::class, 'cart']);
 Route::post('/cart/{product}', [CartController::class, 'addToCart']);
 Route::get('/cart/delete/{id}', [CartController::class, 'removeFromCart']);
 Route::post('/purchase', [CartController::class, 'purchase']);
+
+Route::get ('/history', [CartController::class, 'history']);
