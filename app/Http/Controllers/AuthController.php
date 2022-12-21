@@ -215,9 +215,6 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Cookie::queue(Cookie::forget('username'));
-        Cookie::queue(Cookie::forget('password'));
-
         session()->flush();
         Auth::logout();
 
