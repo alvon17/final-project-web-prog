@@ -65,13 +65,14 @@ class CartController extends Controller
         return redirect('cart');
     }
 
-    public function purchase(){
+    public function purchase()
+    {
         $cart = session('cart');
 
         $total_products = 0;
         $total_price = 0;
 
-        foreach($cart as $c){
+        foreach ($cart as $c) {
             $total_products += $c['quantity'];
             $total_price += $c['quantity'] * $c['price'];
         }
@@ -85,7 +86,7 @@ class CartController extends Controller
 
         $headerId = $transactionHeader->id;
 
-        foreach($cart as $c){
+        foreach ($cart as $c) {
             TransactionDetail::create([
                 'transaction_id' => $headerId,
                 'product_id' => $c['id'],
@@ -101,13 +102,16 @@ class CartController extends Controller
         return redirect('/dashboard');
     }
 
-    public function history () {
+    public function history()
+    {
         $categories = Category::all();
-        $transactionHeader = TransactionHeader::all ();
-        
+        $transactionHeader = TransactionHeader::all();
+
         $count = $transactionHeader->where('user_id', '=', auth()->user()->id)->pluck('id')->toArray();
         $transactionDetail = TransactionDetail::all()->whereIn('transaction_id', $count);
-    
-        return view('transaction', ['categories' => $categories, 'trdetail' => $transactionDetail, 'count'=>$count, 'transactionHeader'=>$transactionHeader]);
+        dd($transactionDetail);
+        $products = Product::all();
+
+        return view('transaction', ['categories' => $categories, 'trdetail' => $transactionDetail, 'count' => $count, 'transactionHeader' => $transactionHeader, 'products' => $products]);
     }
 }
