@@ -109,7 +109,6 @@ class CartController extends Controller
 
         $count = $transactionHeader->where('user_id', '=', auth()->user()->id)->pluck('id')->toArray();
         $transactionDetail = TransactionDetail::all()->whereIn('transaction_id', $count);
-        dd($transactionDetail);
         $products = Product::all();
 
         return view('transaction', ['categories' => $categories, 'trdetail' => $transactionDetail, 'count' => $count, 'transactionHeader' => $transactionHeader, 'products' => $products]);

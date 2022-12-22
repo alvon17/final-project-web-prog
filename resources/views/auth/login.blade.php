@@ -1,6 +1,7 @@
 @extends('dashboard')
 @section('title', 'login')
 @section('content')
+
     @if (session()->has('message'))
         @foreach (explode('-', session('message')) as $message)
             <script>
