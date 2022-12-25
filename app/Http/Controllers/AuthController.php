@@ -203,15 +203,15 @@ class AuthController extends Controller
         return redirect('/manage');
     }
 
-    public function cart()
-    {
-        return view('cart');
-    }
+    // public function cart()
+    // {
+    //     return view('cart');
+    // }
 
-    public function transaction()
-    {
-        return view('transaction');
-    }
+    // public function transaction()
+    // {
+    //     return view('transaction');
+    // }
 
     public function logout()
     {

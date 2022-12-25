@@ -43,9 +43,6 @@
                     @else
                         <li class="nav-item dropdown d-flex">
                             @if (Auth::user()->role == 'user')
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('history') }}">History</a>
-                                </li>
                                 <div class="shopping-cart d-flex align-items-center">
                                     <a href="{{ url('cart') }}">
                                         <i class="fas fa-shopping-cart"></i>
@@ -58,6 +55,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url('history') }}">History</a></li>
                                 <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
                             </ul>
                         </li>
