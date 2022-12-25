@@ -21,7 +21,9 @@
                     </ul>
 
                 </li>
-                
+                {{-- @php
+                    dd(Auth::user());
+                @endphp --}}
                 @guest()
                 @else
                     @if (Auth::user()->role == 'admin')
@@ -40,13 +42,22 @@
                         </li>
                     @else
                         <li class="nav-item dropdown d-flex">
+                            @if (Auth::user()->role == 'user')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('history') }}">History</a>
+                                </li>
+                                <div class="shopping-cart d-flex align-items-center">
+                                    <a href="{{ url('cart') }}">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            @endif
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ url('history') }}">History</a></li>
                                 <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
                             </ul>
                         </li>

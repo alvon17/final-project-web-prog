@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
-use App\Http\Middleware\GuestMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +21,12 @@ Route::get('/', [ProductController::class, 'product']);
 
 Route::get('/category/{name}', [ProductController::class, 'category']);
 Route::get('/detail/{id}', [ProductController::class, 'detail']);
-Route::get('/dashboard', [ProductController::class, 'product'])->name('view.dashboard');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('method.dashboard');
-
-Route::middleware(['isGuest']) -> group (function () {
-    Route::get('/login', [AuthController::class, 'login']);
-    Route::post('/custom-login', [AuthController::class, 'customLogin']);
-    Route::get('/registration', [AuthController::class, 'registration']);
-    Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
-});
-
+Route::get('/dashboard', [ProductController::class, 'product']);
+Route::get('/dashboard', [AuthController::class, 'dashboard']);
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/custom-login', [AuthController::class, 'customLogin']);
+Route::get('/registration', [AuthController::class, 'registration']);
+Route::post('/custom-registration', [AuthController::class, 'customRegistration']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/manage', [AuthController::class, 'manage']);
