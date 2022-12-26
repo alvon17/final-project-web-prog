@@ -23,7 +23,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <p class="card-text">{{ $products->price }}</p>
+                                <p class="card-text">IDR {{ $products->price }}</p>
                             </div>
                         </div>
                 </div>
@@ -53,7 +53,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <p class="card-text">{{ $products->price }}</p>
+                                <p class="card-text">IDR {{ $products->price }}</p>
                             </div>
                         </div>
                         @if (Auth::user()->role == 'user')
