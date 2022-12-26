@@ -1,4 +1,5 @@
-@extends('dashboard')
+@extends('layout.layout')
+
 @section('title', 'register')
 @section('content')
     <div class="signup-form">

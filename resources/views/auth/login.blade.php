@@ -1,4 +1,5 @@
-@extends('dashboard')
+@extends('layout.layout')
+
 @section('title', 'login')
 @section('content')
     @if (session()->has('message'))

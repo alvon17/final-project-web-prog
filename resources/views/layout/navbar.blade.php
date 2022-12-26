@@ -55,7 +55,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ url('history') }}">History</a></li>
+                                @if (Auth::user()->role == 'user')
+                                    <li><a class="dropdown-item" href="{{ url('history') }}">History</a></li>
+                                @endif
                                 <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
                             </ul>
                         </li>

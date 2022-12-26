@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layout.layout')
 
 @section('title', 'update')
 @section('content')
@@ -61,8 +61,11 @@
                                     @endif
                                 </div>
                                 <div class="form-group mb-3">
-                                    <div class="mb-3">
-                                        <label for="price" class="form-label">Price</label>
+                                    <label for="price" class="form-label">Price</label>
+                                    <div class="input-group mb-3">  
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text rounded-left">IDR</span>
+                                        </div>
                                         <input type="text" class="form-control" id="price" value="{{old('price', $products->price)}}" name="price">
                                         @if ($errors->has('price'))
                                             <span class="text-danger">{{ $errors->first('price') }}</span>
