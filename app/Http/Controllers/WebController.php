@@ -30,13 +30,6 @@ class WebController extends Controller
 
         return view('all.search', ['categories' => $categories, 'products' => $products]);
     }
-    
-    public function product()
-    {
-        $products = Product::all();
-        $categories = Category::all();
-        return view('all.dashboard', ['products' => $products, 'categories' => $categories]);
-    }
 
     public function category($name)
     {

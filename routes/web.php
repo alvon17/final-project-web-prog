@@ -9,8 +9,6 @@ use App\Http\Controllers\WebController;
 
 //all roles
 Route::get('/', [WebController::class, 'dashboard'])->name('homepage');
-Route::get('/', [WebController::class, 'product'])->name('homepage');
-Route::get('/dashboard', [WebController::class, 'product'])->name('homepage');
 Route::get('/dashboard', [WebController::class, 'dashboard'])->name('homepage');
 Route::get('/category/{name}', [WebController::class, 'category']);
 Route::get('/detail/{id}', [WebController::class, 'detail']);
