@@ -166,8 +166,8 @@ footer .row {
 }
 
 img {
-    aspect-ratio: 3/2;
-    object-fit: contain;
+    aspect-ratio: 3/2 !important;
+    object-fit: contain !important;
 }
 
 @media screen and (max-width: 991px) {
