@@ -14,18 +14,18 @@
         $total = 0;
     @endphp
 
-    <div class="container mb-5" style="width: 50%;">
+    <div class="container mb-5 manage-container" style="width: 50%;">
         @if (!$cart)
             <div style="text-align: center;">
                 <h3>Cart is Empty</h3>
             </div>
         @else
             @foreach ($cart as $c)
-                <div class="card flex-row mx-auto mt-3">
+                <div class="card flex-lg-row mx-auto mt-3">
                     <div class="image-container">
                         <img class="image-left" src="{{ asset('image/' . $c['photo']) }}" width="200px" height="200px">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body manage-card-body">
                         <h5 class="card-title">{{ $c['name'] }}</h5>
                         <p> Quantity : {{ $c['quantity'] }} </p>
                         <p> Total Price : {{ $c['quantity'] * $c['price'] }} </p>
