@@ -161,7 +161,15 @@ footer .row {
     width: 40% !important;
 }
 
+.right-nav {
+    margin-left: auto;
+}
+
 @media screen and (max-width: 991px) {
+    .right-nav {
+        margin-left: 0;
+    }
+
     .detail-card-body {
         width: 100%;
     }

@@ -21,6 +21,7 @@
                     </ul>
 
                 </li>
+
                 {{-- @php
                     dd(Auth::user());
                 @endphp --}}
@@ -32,7 +33,7 @@
                         </li>
                     @endif
                 @endguest
-                <div class="d-lg-flex w-100 justify-content-end">
+                <ul class="navbar-nav right-nav">
                     @guest()
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('login') }}">Login</a>
@@ -41,14 +42,16 @@
                             <a class="nav-link" href="{{ url('registration') }}">Register</a>
                         </li>
                     @else
-                        <li class="nav-item dropdown d-flex">
-                            @if (Auth::user()->role == 'user')
-                                <div class="shopping-cart d-flex align-items-center">
+                        @if (Auth::user()->role == 'user')
+                            <div class="d-flex align-items-center" style="margin: 0 1vw">
+                                <li class="nav-item">
                                     <a href="{{ url('cart') }}">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
-                                </div>
-                            @endif
+                                </li>
+                            </div>
+                        @endif
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 {{ Auth::user()->name }}
@@ -62,7 +65,7 @@
                             </ul>
                         </li>
                     @endguest
-                </div>
+                </ul>
             </ul>
         </div>
     </div>
