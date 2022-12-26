@@ -32,18 +32,18 @@ Route::middleware('guest')->group(function(){
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/manage', [AdminController::class, 'manage']);
     Route::get('/add', [AdminController::class, 'add']);
+    Route::post('/custom-add-product', [AdminController::class, 'customAddProduct']);
     Route::get('/manage/update/{id}', [AdminController::class, 'update']);
     Route::post('/manage/edit', [AdminController::class, 'edit']);
     Route::get('/manage/delete/{id}', [AdminController::class, 'deleteProduct']);
     Route::get('/manage/search', [AdminController::class, 'manageSearch'])->name('manageSearch');
-    Route::post('/custom-add-product', [AdminController::class, 'customAddProduct']);
 });
 
 //user
 Route::middleware('auth', 'user')->group(function () {
+    Route::get('/cart', [UserController::class, 'cart']);
     Route::post('/cart/{product}', [UserController::class, 'addToCart']);
     Route::get('/cart/delete/{id}', [UserController::class, 'removeFromCart']);
     Route::post('/purchase', [UserController::class, 'purchase']);
     Route::get('/history', [UserController::class, 'history']);
-    Route::get('/cart', [UserController::class, 'cart']);
 });
