@@ -72,7 +72,7 @@ class UserController extends Controller
         $total_products = 0;
         $total_price = 0;
 
-        foreach($cart as $c){
+        foreach ($cart as $c) {
             $total_products += $c['quantity'];
             $total_price += $c['quantity'] * $c['price'];
         }
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $headerId = $transactionHeader->id;
 
-        foreach($cart as $c){
+        foreach ($cart as $c) {
             TransactionDetail::create([
                 'transaction_id' => $headerId,
                 'product_id' => $c['id'],
@@ -102,13 +102,16 @@ class UserController extends Controller
         return redirect('/dashboard');
     }
 
-    public function history () {
+    public function history()
+    {
         $categories = Category::all();
-        $transactionHeader = TransactionHeader::all ();
-        $count = $transactionHeader->where('user_id', '=', auth()->user()->id)->pluck('id')->toArray();
-        $transactionDetail = TransactionDetail::all()->whereIn('transaction_id', $count);
+        $transactionHeader = TransactionHeader::all();
+
+        $transactionHeader = TransactionHeader::where('user_id', '=', auth()->user()->id)->get();
+        $transactionDetail = TransactionDetail::whereIn('transaction_id', $transactionHeader->pluck('id'))->get();
+
         $products = Product::all();
 
-        return view('user.history', ['categories' => $categories, 'transactionDetail' => $transactionDetail, 'count'=>$count, 'transactionHeader'=>$transactionHeader, 'products'=>$products]);
+        return view('user.history', ['categories' => $categories, 'trdetail' => $transactionDetail, 'trheader' => $transactionHeader, 'transactionHeader' => $transactionHeader, 'products' => $products]);
     }
 }
