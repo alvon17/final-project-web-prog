@@ -68,7 +68,6 @@ class UserController extends Controller
     public function purchase()
     {
         $cart = session('cart');
-
         $total_products = 0;
         $total_price = 0;
 
@@ -96,7 +95,6 @@ class UserController extends Controller
         }
 
         session()->forget('cart');
-
         session()->flash('message', 'Transaction Success');
 
         return redirect('/dashboard');
