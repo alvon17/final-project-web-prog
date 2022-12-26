@@ -30,16 +30,7 @@ class WebController extends Controller
 
         return view('all.search', ['categories' => $categories, 'products' => $products]);
     }
-
-    public function manageSearch(Request $request)
-    {
-        $categories = Category::all();
-        $name = $request->search;
-        $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
-
-        return view('admin.manage', ['categories' => $categories, 'products' => $products]);
-    }
-
+    
     public function product()
     {
         $products = Product::all();

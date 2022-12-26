@@ -28,7 +28,7 @@ class AdminController extends Controller
         $this->validate($data, [
             'name' => 'required',
             'category' => 'required',
-            'description' => 'required',
+            'description' => 'required|max:255',
             'price' => 'required|integer',
             'file' => 'required|file|image|mimes:jpeg,png,jpg',
         ]);
@@ -74,7 +74,7 @@ class AdminController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'category' => 'required',
-            'description' => 'required',
+            'description' => 'required|max:255',
             'price' => 'required|integer',
             'file' => 'required|file|image|mimes:jpeg,png,jpg',
         ]);
@@ -97,4 +97,14 @@ class AdminController extends Controller
 
         return redirect('/manage');
     }
+
+    public function manageSearch(Request $request)
+    {
+        $categories = Category::all();
+        $name = $request->search;
+        $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
+
+        return view('admin.manage', ['categories' => $categories, 'products' => $products]);
+    }
+
 }
