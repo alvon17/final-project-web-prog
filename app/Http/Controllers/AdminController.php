@@ -102,7 +102,7 @@ class AdminController extends Controller
     {
         $categories = Category::all();
         $name = $request->search;
-        $products = Product::where('name', 'LIKE', '%' . $name . '%')->get();
+        $products = Product::where('name', 'LIKE', '%' . $name . '%')->paginate(10);
 
         return view('admin.manage', ['categories' => $categories, 'products' => $products]);
     }
