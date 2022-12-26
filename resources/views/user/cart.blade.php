@@ -23,7 +23,8 @@
             @foreach ($cart as $c)
                 <div class="card flex-lg-row mx-auto mt-3">
                     <div class="image-container">
-                        <img class="image-left" src="{{ asset('image/' . $c['photo']) }}" width="200px" height="200px">
+                        <img class="img-fluid image-left" src="{{ asset('image/' . $c['photo']) }}" width="280px"
+                            height="200px">
                     </div>
                     <div class="card-body manage-card-body">
                         <h5 class="card-title">{{ $c['name'] }}</h5>

@@ -21,7 +21,7 @@
                 <div class="col">
                     <a href="{{ url('detail', ['id' => $i->id]) }}" style="text-decoration:none; color:black">
                         <div class="card h-100">
-                            <img src="{{ asset('/image/' . $i->photo) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('/image/' . $i->photo) }}" class="img-fluid card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $i->name }}</h5>
                                 <b>
