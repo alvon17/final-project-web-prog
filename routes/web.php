@@ -13,6 +13,7 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])->name('homepage');
 Route::get('/category/{name}', [WebController::class, 'category']);
 Route::get('/detail/{id}', [WebController::class, 'detail']);
 Route::get('/search', [WebController::class, 'search'])->name('search');
+Route::get('/category/{id}/search', [WebController::class, 'categorySearch'])->name('categorySearch');
 
 //admin & user
 Route::middleware('auth')->group(function () {
@@ -21,7 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //guest
-Route::middleware('guest')->group(function(){
+Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/custom-login', [AuthController::class, 'customLogin']);
     Route::get('/registration', [AuthController::class, 'registration']);

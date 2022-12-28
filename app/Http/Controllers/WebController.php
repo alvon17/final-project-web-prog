@@ -31,6 +31,19 @@ class WebController extends Controller
         return view('all.search', ['categories' => $categories, 'products' => $products]);
     }
 
+    public function categorySearch(Request $request)
+    {
+        $categories = Category::all();
+        $cat_id = $request->id;
+        $name = $request->search;
+        $products = Product::where([
+            ['name', 'LIKE', '%' . $name . '%'],
+            ['category_id', '=', $cat_id]
+        ])->get();
+
+        return view('all.categorySearch', ['categories' => $categories, 'products' => $products, 'category_id' => $cat_id]);
+    }
+
     public function category($name)
     {
         $categories = Category::all();
