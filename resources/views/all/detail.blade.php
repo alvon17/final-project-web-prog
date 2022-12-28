@@ -7,7 +7,7 @@
 
             <div class="card flex-lg-row mx-auto align-items-center justify-content-center shadow-none" style="border: none;">
                 <div class="image-container">
-                    <img class="img-fluid image-left" src="{{ asset('image/' . $products->photo) }}" width="400px" height="300px">
+                    <img class="img-fluid image-left" src="{{ asset('storage/' . $products->photo) }}" width="400px" height="300px">
                 </div>
                 <div class="card-body detail-card-body">
                     <form>
@@ -34,7 +34,7 @@
 
             <div class="card flex-lg-row mx-auto align-items-center justify-content-center shadow-none" style="border: none;">
                 <div class="image-container">
-                    <img class="img-fluid image-left" src="{{ asset('image/' . $products->photo) }}" width="400px"
+                    <img class="img-fluid image-left" src="{{ asset('storage/' . $products->photo) }}" width="400px"
                         height="300px">
                 </div>
                 <div class="card-body detail-card-body">

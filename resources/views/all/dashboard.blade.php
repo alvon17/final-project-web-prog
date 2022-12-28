@@ -32,7 +32,7 @@
                         <div class="col">
                             <a class="card-link" href="{{ url('detail', ['id' => $product->id]) }}">
                                 <div class="card h-100">
-                                    <img src="{{ asset('image/' . $product->photo) }}" class="img-fluid card-img-top"
+                                    <img src="{{ asset('storage/' . $product->photo) }}" class="img-fluid card-img-top"
                                         alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $product->name }}</h5>

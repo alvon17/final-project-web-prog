@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -35,7 +36,7 @@ class AdminController extends Controller
 
         $file = $data->file('file');
         $file_name = $file->getClientOriginalName();
-        $upload_path = 'image';
+        $upload_path = 'storage/';
         $file->move($upload_path, $file_name);
 
         Product::create([
@@ -55,7 +56,7 @@ class AdminController extends Controller
     {
         $products = Product::where('id', $id)->first();
 
-        File::delete('image/' . $products->photo);
+        File::delete('storage/' . $products->photo);
 
         Product::where('id', $id)->first()->delete();
 
@@ -80,11 +81,11 @@ class AdminController extends Controller
         ]);
 
         $products = Product::where('id', $request->id)->first();
-        File::delete('image/' . $products->photo);
+        File::delete('storage/' . $products->photo);
 
         $file = $request->file('file');
         $file_name = $file->getClientOriginalName();
-        $upload_path = 'image';
+        $upload_path = 'storage/';
         $file->move($upload_path, $file_name);
 
         DB::table('products')->where('id', $request->id)->update([
