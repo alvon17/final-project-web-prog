@@ -13,7 +13,6 @@ Route::get('/dashboard', [WebController::class, 'dashboard'])->name('homepage');
 Route::get('/category/{name}', [WebController::class, 'category']);
 Route::get('/detail/{id}', [WebController::class, 'detail']);
 Route::get('/search', [WebController::class, 'search'])->name('search');
-Route::get('/category/{id}/search', [WebController::class, 'categorySearch'])->name('categorySearch');
 
 //admin & user
 Route::middleware('auth')->group(function () {

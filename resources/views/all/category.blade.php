@@ -3,8 +3,7 @@
 @section('title', 'category')
 @section('content')
 
-    <form class="input-group justify-content-center pb-4" action="{{ route('categorySearch', ['id' => $category->id]) }}"
-        method="GET">
+    <form class="input-group justify-content-center pb-4" action="{{ route('search') }}" method="GET">
         <div class="form-outline search-form-outline">
             <input type="text" id="form1" name="search" class="form-control search-form-control" />
         </div>
