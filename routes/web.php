@@ -33,9 +33,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/manage', [AdminController::class, 'manage']);
     Route::get('/add', [AdminController::class, 'add']);
     Route::post('/custom-add-product', [AdminController::class, 'customAddProduct']);
-    Route::get('/manage/update/{id}', [AdminController::class, 'update']);
+    Route::get('/manage/update/{id}', [AdminController::class, 'update'])->name('update');
     Route::post('/manage/edit', [AdminController::class, 'edit']);
-    Route::get('/manage/delete/{id}', [AdminController::class, 'deleteProduct']);
+    Route::get('/manage/delete/{id}', [AdminController::class, 'deleteProduct'])->name('delete');
     Route::get('/manage/search', [AdminController::class, 'manageSearch'])->name('manageSearch');
 });
 

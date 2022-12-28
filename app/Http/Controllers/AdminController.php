@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,7 +34,8 @@ class AdminController extends Controller
         ]);
 
         $file = $data->file('file');
-        $file_name = $file->getClientOriginalName();
+        $path_info = pathinfo($file->getClientOriginalName());
+        $file_name = $path_info['filename'] . '-' . time() . '.' . $file->getClientOriginalExtension();
         $upload_path = 'storage/';
         $file->move($upload_path, $file_name);
 
@@ -84,17 +84,20 @@ class AdminController extends Controller
         File::delete('storage/' . $products->photo);
 
         $file = $request->file('file');
-        $file_name = $file->getClientOriginalName();
+        $path_info = pathinfo($file->getClientOriginalName());
+        $file_name = $path_info['filename'] . '-' . time() . '.' . $file->getClientOriginalExtension();
         $upload_path = 'storage/';
         $file->move($upload_path, $file_name);
 
-        DB::table('products')->where('id', $request->id)->update([
+        Product::where('id', $request->id)->update([
             'name' => $request->name,
             'category_id' => $request->category,
             'description' => $request->description,
             'price' => $request->price,
-            'photo' => $file_name
+            'photo' => $file_name,
         ]);
+
+        session()->flash('message', 'Update Product Successful');
 
         return redirect('/manage');
     }

@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-body d-flex justify-content-end">
                     <div class="me-2">
-                        <a href="manage/update/ {{ $product->id }}" style="text-decoration: none;">
+                        <a href="{{ route('update', ['id' => $product->id]) }}" style="text-decoration: none;">
                             <button type="button" class="btn btn-outline-warning">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-pen" viewBox="0 0 16 16">
@@ -59,7 +59,7 @@
                         </a>
                     </div>
                     <div class="ms-2">
-                        <a href="manage/delete/ {{ $product->id }}" style="text-decoration: none;">
+                        <a href="{{ route('delete', ['id' => $product->id]) }}" style="text-decoration: none;">
                             <button type="button" class="btn btn-outline-danger">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-trash" viewBox="0 0 16 16">
